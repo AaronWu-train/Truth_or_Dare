@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val inputText: EditText = findViewById(R.id.text_input)
 
         val questionSet: MutableSet<String> =
-            mutableSetOf<String>("你喜歡誰？", "大叫：我喜歡OOO")
+            mutableSetOf<String>("測試問題一", "測試問題二")
 
         var startDegree = 0.0f
         var endDeg = 0.0f
