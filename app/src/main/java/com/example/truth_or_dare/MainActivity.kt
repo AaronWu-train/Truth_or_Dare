@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             startDegree = endDeg % 360
 
             val handler = Handler()
-            handler.postDelayed(Runnable {     // 計時器
+            handler.postDelayed( {     // 計時器
                 // 出現提問
                 var chosenQuestion = questionSet.random()
                 while (chosenQuestion == questionText.text) {
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
             val stringInTextField = inputText.text.toString()
             if (stringInTextField.isNotEmpty()) {
                 questionSet.add(stringInTextField)
+                Toast.makeText(this, "成功新增問題", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "請先輸入內容", Toast.LENGTH_SHORT).show()
             }
