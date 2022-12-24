@@ -13,11 +13,14 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.start_button)
         val addQuestionButton: Button = findViewById(R.id.add_button)
-        val questionText: TextView = findViewById(R.id.question)
-        val inputText: EditText = findViewById(R.id.text_input)
+        val questionTextBlock: TextView = findViewById(R.id.question)
+        val inputTextBlock: EditText = findViewById(R.id.text_input)
+        val rotateArrowImage : ImageView = findViewById(R.id.spinnerImage)
 
-        val questionSet: MutableSet<String> =
-            mutableSetOf<String>("測試問題一", "測試問題二")
+        val questionSet: MutableSet<String> = mutableSetOf<String>(
+            "測試問題一",
+            "測試問題二"
+        ) // 寫在這裡的會是app預設就有的問題
 
         var startDegree = 0.0f
         var endDeg = 0.0f
@@ -36,31 +39,30 @@ class MainActivity : AppCompatActivity() {
             val spinTime : Long= (rotateDeg*3).toLong()
             am.duration = spinTime
             am.setFillAfter(true)
-            val rotateArrow : ImageView = findViewById(R.id.imageView2)
-            rotateArrow.startAnimation(am)
-            startDegree = endDeg % 360
 
-            val handler = Handler()
+            rotateArrowImage.startAnimation(am)
+            startDe gree = endDeg % 360
+
+            val handler = Handler()    // 建立handler()
             handler.postDelayed( {     // 計時器
                 // 出現提問
                 var chosenQuestion = questionSet.random()
-                while (chosenQuestion == questionText.text) {
+                while (chosenQuestion == questionTextBlock.text) {
                     chosenQuestion = questionSet.random()
                 }
-                questionText.setText(chosenQuestion)
+                questionTextBlock.setText(chosenQuestion)
             }, spinTime)
         }
 
         addQuestionButton.setOnClickListener {
-            val stringInTextField = inputText.text.toString()
+            val stringInTextField = inputTextBlock.text.toString()
             if (stringInTextField.isNotEmpty()) {
                 questionSet.add(stringInTextField)
                 Toast.makeText(this, "成功新增問題", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "請先輸入內容", Toast.LENGTH_SHORT).show()
             }
-            inputText.setText("")
+            inputTextBlock.setText("")  // 清空文字輸入欄
         }
     }
-
 }
