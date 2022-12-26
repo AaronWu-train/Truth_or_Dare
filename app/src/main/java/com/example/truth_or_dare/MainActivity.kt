@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             am.setFillAfter(true)
 
             rotateArrowImage.startAnimation(am)
-            startDe gree = endDeg % 360
+            startDegree = endDeg % 360
 
             val handler = Handler()    // 建立handler()
             handler.postDelayed( {     // 計時器
